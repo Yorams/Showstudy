@@ -1,0 +1,24 @@
+{
+  "name": "showstudy",
+  "version": "0.0.1",
+  "productName": "Show Study Recorder",
+  "description": "Connect true OSC with a High End hog to record the triggerd cue's",
+  "main": "main.js",
+  "author": "Yoram Scheer",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "ip": "^1.1.5",
+    "jquery": "^3.3.1",
+    "mdi": "^2.1.99",
+    "node-osc": "^2.1.0",
+    "popper.js": "^1.14.1",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "electron": "^1.8.3"
+  }
+}

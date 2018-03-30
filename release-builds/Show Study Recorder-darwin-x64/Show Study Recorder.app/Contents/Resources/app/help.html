@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Show Study Recorder</title>
+        <link rel = "stylesheet" href = "./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel = "stylesheet" href = "./node_modules/mdi/css/materialdesignicons.min.css "  media="all" type="text/css" />
+        <style>
+            body{
+                margin: 15px;
+                padding: 0;
+                background-color: #eee;
+            }
+            div.headerMain{
+                margin-bottom: 8px;
+                margin-top: -6px;
+            }
+            div.mainLogo{
+                background-image: url(icons/64x64.png);
+                height: 64px;
+                width: 64px;
+            }
+            div.mainTitle{
+                font-family: inherit;
+                font-weight: 500;
+                line-height: 1.2;
+                font-size: 2.5rem;
+                margin-top: -16px;
+                margin-top: 6px;
+                font-weight: 200;
+                text-shadow: 1px 2px 4px rgba(0, 98, 204, 0.65);
+                padding-left: 13px;
+
+            }
+            .listNormal{
+                background: none;
+                border: none;
+                padding: 0.80rem 0.40rem;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="headerMain">
+            <div class="float-left mainLogo"></div>
+            <div class="float-left mainTitle">Help</div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="mainContent">
+            <div class="h3"> Uitleg Show Study Recorder </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item listNormal">De Show Study Recorder neemt de timing van cue’s op. Deze cue’s kunnen dan worden opgeslagen als een ondertitel bestand welke je dan onder de opname van de show kan zetten. Op deze manier is het makkelijk om de show te kunnen leren.</li>
+
+                <li class="list-group-item listNormal">Om cue’s op te kunnen nemen moet je eerst een export maken van je cuelijsten op de hog. En het een en ander instellen op de Hog.</li>
+
+                <li class="list-group-item"><strong>1.</strong> Open de Lists Directory en klik bovenin op “Export Cuelists”. Sla het bestand op, op een USB Stick o.i.d. en kopieer het XML bestand naar je computer. </li>
+
+                <li class="list-group-item listNormal">Als je het bestand opent vanaf je USB stick kan het zijn dat de sessie mislukt als je per ongeluk de USB stick uit je computer trekt. Dus kopieer hem naar je computer!</li>
+
+                <li class="list-group-item"><strong>2.</strong> Open het bestand in de recorder. En kies in het dropdown menu de cuelist waarvan je de cue’s wilt opnemen.</li>
+                 
+                <li class="list-group-item listNormal">De recorder luistert naar OSC commando’s van de Hog. Deze worden normaal gebruikt om de hog op afstand te bedienen, dus het kan zijn dat de afstandbediening op je telefoon niet of maar half werkt.</li>
+
+                <li class="list-group-item"><strong>3.</strong> Vul het poortnummer in waarnaar de recorder moet luisteren. (Dat is de “Output” poort bij de “Open Sound Control” instellingen op de Hog.)</li>
+
+                <li class="list-group-item"><strong>4.</strong> Vul in het zelfde scherm op de Hog het IP adres van de recorder in. (Het IP adres van de recorder staat bij het vakje “Lokaal IP Adres” bij de recorder.)</li>
+
+                <li class="list-group-item"><strong>5.</strong> Als je dan op “Start Server” klikt in de recorder moet de verbinding compleet zijn.</li>
+
+                <li class="list-group-item"><strong>6.</strong> Het “Verbinding met Hog” vakje licht elke seconde groen op als hij verbinding heeft met de Hog.</li>
+
+                <li class="list-group-item listNormal">Als je nu een cue doordrukt op de hog moet hij tevoorschijn komen in het Log vak</li>
+            </ul>
+        </div>
+
+    </body>
+</html>

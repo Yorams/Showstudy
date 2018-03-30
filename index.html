@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Show Study Recorder</title>
+        <link rel = "stylesheet" href = "./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel = "stylesheet" href = "./node_modules/mdi/css/materialdesignicons.min.css "  media="all" type="text/css" />
+        <style>
+            body{
+                margin: 15px;
+                padding: 0;
+                background-color: #eee;
+            }
+            div.headerMain{
+                margin-bottom: 8px;
+                margin-top: -6px;
+            }
+            div.mainLogo{
+                background-image: url(icons/64x64.png);
+                height: 64px;
+                width: 64px;
+            }
+            div.mainTitle{
+                font-family: inherit;
+                font-weight: 500;
+                line-height: 1.2;
+                font-size: 2.5rem;
+                margin-top: -16px;
+                margin-top: 6px;
+                font-weight: 200;
+                text-shadow: 1px 2px 4px rgba(0, 98, 204, 0.65);
+                padding-left: 13px;
+
+            }
+            div.openDebug, div.openHelp{
+                padding: 2px;
+                cursor: pointer;
+            }
+            div.openDebug:hover, div.openHelp:hover{
+                color: #909090;
+            }
+            div.logWindow{
+                white-space: pre;
+                font-family: "Lucida Console", Monaco, monospace;
+                font-size: 0.65rem;
+                height: 143px;
+                overflow-y: scroll;
+                transition: all 0.2s linear;
+            }
+            div.logWindowMax{
+                height: 356px;
+            }
+            .inpLabel{
+                margin-bottom: 0;
+                font-size: .875rem;
+            }
+            .statHogconnectionBadge{
+                transition: all 0.2s linear;
+            }
+            /* status cards */
+            div.statusValue{
+                text-align: center;
+            }
+            div.statusName{
+                text-align: center;
+                font-weight: 200;
+                font-size: 0.8rem;
+            }
+            div.colStatus .badge{
+                font-size: 75%;
+                font-weight: 500;
+            }
+            div.colMain{
+                padding: 0px 12px;
+            }
+            div.colMain div.col-sm-3, div.colMain div.col-sm-4, div.colMain div.col-sm-9{
+                padding-left: 3px;
+                padding-right: 3px;
+            }
+            /* Customized styles for bootstrap */
+            div.defaultCard{
+                margin-bottom: 5px;
+            }
+            div.defaultCardHeader{
+                font-weight: 500;
+            }
+            div.collapseArrow{
+                display: inline-flex;
+                float: right;
+                transform:rotate(0deg);
+                transition: all 0.2s linear;
+                font-size: 1.5rem;
+                margin: -0.4rem;
+            }
+
+            .collapseArrow.down{
+                transform:rotate(-90deg);
+            }
+            .card-header {
+                padding: 0.15rem 0.45rem;
+            }
+            .card-body{
+                padding: 0.25rem 0.75rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="headerMain">
+            <div class="float-left mainLogo"></div>
+            <div class="float-left mainTitle">Show Study Recorder</div>
+            <div class="float-right openDebug"><i class="mdi mdi-settings"></i> </div>
+            <div class="float-right openHelp"><i class="mdi mdi-help-circle-outline"></i> </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="card defaultCard colSettings">
+            <div class="card-header defaultCardHeader">Instellingen</div>
+            <div class="card-body collapse collEnable">
+
+                <label class="inpLabel">Hog Lists Export</label>
+                <div class="input-group input-group-sm mb-3">
+                    <input type="text" class="form-control inpHogExportFile" placeholder="Klik op openen om een bestand te openen">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary btnHogExportFileDialog" type="button"><i class="mdi mdi-folder-open"></i> Open</button>
+                    </div>
+
+                </div>
+                <label class="inpLabel">Huidige show</label>
+                <div class="input-group input-group-sm mb-3">
+                    <input type="text" disabled="disabled" class="form-control currentShow" value="Open een Hog Export bestand">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group-sm">
+                            <label class="inpLabel">Huidige lijst</label>
+                            <select class="form-control inpCueLists">
+                                <option>Open een Hog Export bestand</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="inpLabel">Ingaande poort</label>
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="number" class="form-control inpServerPort" value="7002">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="card defaultCard">
+            <div class="card-body text-center">
+                <button class = "btn btn-success btn-sm btnStartServer"><i class="mdi mdi-play"></i> Start Server</button>
+                <button class = "btn btn-danger btn-sm btnStopServer"><i class="mdi mdi-stop"></i>  Stop Server</button>
+                <button class = "btn btn-warning btn-sm btnResetTimer"><i class="mdi mdi-refresh"></i> Reset Sessie</button>
+                <button class = "btn btn-dark btn-sm btnSave"><i class="mdi mdi-content-save"></i> Opslaan</button>
+            </div>
+        </div>
+            
+            
+        </div>
+        <div class="row colMain">
+            <div class="col-sm-3">
+                <div class="card defaultCard colStatus statServer">
+                    <div class="card-body mx-auto">
+                        <div class="statusValue"><span class="badge badge-success">Gestart</span></div>
+                        <div class="statusName">Server</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card defaultCard colStatus statHogconnection">
+                    <div class="card-body mx-auto">
+                        <div class="statusValue"><span class="badge badge-warning statHogconnectionBadge">Verbonden</span></div>
+                        <div class="statusName">Verbinding met Hog</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card defaultCard colStatus statCurrentTime">
+                    <div class="card-body mx-auto">
+                        <div class="statusValue"><span class="badge badge-dark">00:00:00</span></div>
+                        <div class="statusName">Tijd</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card defaultCard colStatus statRecvCuesCount">
+                    <div class="card-body mx-auto">
+                        <div class="statusValue"><span class="badge badge-dark">0</span></div>
+                        <div class="statusName">Cue's Ontvangen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row colMain">
+            <div class="col-sm-3">
+                <div class="card defaultCard colStatus statIpadress">
+                    <div class="card-body mx-auto">
+                        <div class="statusValue"><span class="badge badge-dark">255.255.255.255</span></div>
+                        <div class="statusName">Lokaal IP Adres</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="card defaultCard colStatus statCurrShow">
+                    <div class="card-body mx-auto">
+                        <div class="statusValue"><span class="badge badge-dark">...</span></div>
+                        <div class="statusName">Geladen Show</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="h3">Log</div>
+        <div class="card card-body logWindow">...</div>
+
+        <script src = "./view.js" ></script>
+
+    </body>
+</html>
